@@ -44,13 +44,13 @@ class DriverProvider:
         if cls._driver_type == "CHROME": options = webdriver.ChromeOptions()
         if cls._driver_type == "FIREFOX": options = webdriver.FirefoxOptions()
         if cls._driver_type == "RANDOM":
-            r = random.randint(0, 2)
+            r = random.randint(0, 1)
             if r == 0:
                 options = webdriver.EdgeOptions()
             if r == 1:
                 options = webdriver.ChromeOptions()
-            else:
-                options = webdriver.FirefoxOptions()
+            #else:
+            #    options = webdriver.FirefoxOptions()
         grid_url = ConfigProvider.get_grid_ip() + "/wd/hub"
         driver = webdriver.Remote(command_executor=grid_url, options=options)
         return driver

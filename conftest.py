@@ -46,10 +46,6 @@ def before_all_and_after_all():
     ProductProvider.initialize_test_data()
     WatchListEntryProvider.initialize_test_data()
     yield
-    # Clean up test data from the current run
-    #if ConfigProvider.get_environment() == "LOCAL":
-        #clean_up_all_product_test_data()
-        #clean_up_all_watchlist_test_data()
     
 @pytest.fixture 
 def scenario_context():
@@ -64,18 +60,12 @@ def scenario_context():
     if "product" in sc:
         product: Product = sc["product"]
         url = ConfigProvider.get_url() + "/ProductListApi/Delete/" + product.manufacturer + "/" + product.model
-        print("INSIDE CLEANUP PRODUCT")
-        print(url)
-        x = requests.delete(url)
-        print(x.status_code)
+        requests.delete(url)
     # Clean up watchlist entry test data for this scenario
     if "watchlist_entry" in sc:
         watchlist_entry: WatchListEntry = sc["watchlist_entry"]
         url = ConfigProvider.get_url() + "/WatchListApi/Delete/" + watchlist_entry.manufacturer + "/" + watchlist_entry.model
-        print("INSIDE CLEANUP WATCHLIST_ENTRY")
-        print(url)
-        x = requests.delete(url)
-        print(x.status_code)
+        requests.delete(url)
     # Close the browser
     page.close_app()
 

@@ -1,0 +1,123 @@
+version: "3"
+services:
+  hub:
+    image: selenium/hub:4.1.1-20211217
+    container_name: hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+
+  firefox1:
+    image: selenium/node-firefox:4.1.1-20211217
+    shm_size: 2gb
+    depends_on:
+      - hub
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  firefox1_video:
+    image: selenium/video:ffmpeg-4.3.1-20211217
+    volumes:
+      - C:\tmp\videos:/videos
+    depends_on:
+      - firefox1
+    environment:
+      - DISPLAY_CONTAINER_NAME=firefox1
+      - FILE_NAME=firefox1_video_test.mp4
+
+  firefox2:
+    image: selenium/node-firefox:4.1.1-20211217
+    shm_size: 2gb
+    depends_on:
+      - hub
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  firefox2_video:
+    image: selenium/video:ffmpeg-4.3.1-20211217
+    volumes:
+      - C:\tmp\videos:/videos
+    depends_on:
+      - firefox2
+    environment:
+      - DISPLAY_CONTAINER_NAME=firefox2
+      - FILE_NAME=firefox2_video_test.mp4
+
+  firefox3:
+    image: selenium/node-firefox:4.1.1-20211217
+    shm_size: 2gb
+    depends_on:
+      - hub
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  firefox3_video:
+    image: selenium/video:ffmpeg-4.3.1-20211217
+    volumes:
+      - C:\tmp\videos:/videos
+    depends_on:
+      - firefox3
+    environment:
+      - DISPLAY_CONTAINER_NAME=firefox3
+      - FILE_NAME=firefox1_video_test.mp4
+
+  firefox4:
+    image: selenium/node-firefox:4.1.1-20211217
+    shm_size: 2gb
+    depends_on:
+      - hub
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  firefox4_video:
+    image: selenium/video:ffmpeg-4.3.1-20211217
+    volumes:
+      - C:\tmp\videos:/videos
+    depends_on:
+      - firefox4
+    environment:
+      - DISPLAY_CONTAINER_NAME=firefox4
+      - FILE_NAME=firefox2_video_test.mp4
+
+  firefox5:
+    image: selenium/node-firefox:4.1.1-20211217
+    shm_size: 2gb
+    depends_on:
+      - hub
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  firefox5_video:
+    image: selenium/video:ffmpeg-4.3.1-20211217
+    volumes:
+      - C:\tmp\videos:/videos
+    depends_on:
+      - firefox5
+    environment:
+      - DISPLAY_CONTAINER_NAME=firefox5
+      - FILE_NAME=firefox1_video_test.mp4
+
+  firefox6:
+    image: selenium/node-firefox:4.1.1-20211217
+    shm_size: 2gb
+    depends_on:
+      - hub
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  firefox6_video:
+    image: selenium/video:ffmpeg-4.3.1-20211217
+    volumes:
+      - C:\tmp\videos:/videos
+    depends_on:
+      - firefox6
+    environment:
+      - DISPLAY_CONTAINER_NAME=firefox6
+      - FILE_NAME=firefox2_video_test.mp4

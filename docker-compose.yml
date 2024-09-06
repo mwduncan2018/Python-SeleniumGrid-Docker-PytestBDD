@@ -1,0 +1,96 @@
+version: "3"
+services:
+
+  selenium-hub:
+    container_name: selenium_hub
+    image: selenium/hub:3.141.59-20210929
+    ports:
+      - "4444:4444"
+
+  firefox-alpha:
+    image: selenium/node-firefox:3.141.59-20210929
+    container_name: firefox_alpha
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+
+  firefox-beta:
+    image: selenium/node-firefox:3.141.59-20210929
+    container_name: firefox_beta
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+  
+  firefox-charlie:
+    image: selenium/node-firefox:3.141.59-20210929
+    container_name: firefox_charlie
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+
+  firefox-delta:
+    image: selenium/node-firefox:3.141.59-20210929
+    container_name: firefox_delta
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+
+  firefox-echo:
+    image: selenium/node-firefox:3.141.59-20210929
+    container_name: firefox_echo
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+
+  firefox-foxtrot:
+    image: selenium/node-firefox:3.141.59-20210929
+    container_name: firefox_foxtrot
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+
+  firefox-golf:
+    image: selenium/node-firefox:3.141.59-20210929
+    container_name: firefox_golf
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+
+  firefox-hotel:
+    image: selenium/node-firefox:3.141.59-20210929
+    container_name: firefox_hotel
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444

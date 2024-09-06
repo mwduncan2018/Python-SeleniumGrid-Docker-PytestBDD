@@ -1,0 +1,123 @@
+version: "3"
+services:
+  hub:
+    image: selenium/hub:4.1.1-20211217
+    container_name: hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+
+  chrome1:
+    image: selenium/node-chrome:4.1.1-20211217
+    shm_size: 2gb
+    depends_on:
+      - hub
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  chrome1_video:
+    image: selenium/video:ffmpeg-4.3.1-20211217
+    volumes:
+      - C:\tmp\videos:/videos
+    depends_on:
+      - chrome1
+    environment:
+      - DISPLAY_CONTAINER_NAME=chrome1
+      - FILE_NAME=chrome1_video_test.mp4
+
+  chrome2:
+    image: selenium/node-chrome:4.1.1-20211217
+    shm_size: 2gb
+    depends_on:
+      - hub
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  chrome2_video:
+    image: selenium/video:ffmpeg-4.3.1-20211217
+    volumes:
+      - C:\tmp\videos:/videos
+    depends_on:
+      - chrome2
+    environment:
+      - DISPLAY_CONTAINER_NAME=chrome2
+      - FILE_NAME=chrome2_video_test.mp4
+
+  chrome3:
+    image: selenium/node-chrome:4.1.1-20211217
+    shm_size: 2gb
+    depends_on:
+      - hub
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  chrome3_video:
+    image: selenium/video:ffmpeg-4.3.1-20211217
+    volumes:
+      - C:\tmp\videos:/videos
+    depends_on:
+      - chrome3
+    environment:
+      - DISPLAY_CONTAINER_NAME=chrome3
+      - FILE_NAME=chrome3_video_test.mp4
+
+  chrome4:
+    image: selenium/node-chrome:4.1.1-20211217
+    shm_size: 2gb
+    depends_on:
+      - hub
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  chrome4_video:
+    image: selenium/video:ffmpeg-4.3.1-20211217
+    volumes:
+      - C:\tmp\videos:/videos
+    depends_on:
+      - chrome4
+    environment:
+      - DISPLAY_CONTAINER_NAME=chrome4
+      - FILE_NAME=chrome4_video_test.mp4
+
+  chrome5:
+    image: selenium/node-chrome:4.1.1-20211217
+    shm_size: 2gb
+    depends_on:
+      - hub
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  chrome5_video:
+    image: selenium/video:ffmpeg-4.3.1-20211217
+    volumes:
+      - C:\tmp\videos:/videos
+    depends_on:
+      - chrome5
+    environment:
+      - DISPLAY_CONTAINER_NAME=chrome5
+      - FILE_NAME=chrome5_video_test.mp4
+
+  chrome6:
+    image: selenium/node-chrome:4.1.1-20211217
+    shm_size: 2gb
+    depends_on:
+      - hub
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  chrome6_video:
+    image: selenium/video:ffmpeg-4.3.1-20211217
+    volumes:
+      - C:\tmp\videos:/videos
+    depends_on:
+      - chrome6
+    environment:
+      - DISPLAY_CONTAINER_NAME=chrome6
+      - FILE_NAME=chrome6_video_test.mp4

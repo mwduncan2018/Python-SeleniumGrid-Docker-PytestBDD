@@ -1,0 +1,4 @@
+pytest-bdd
+pytest-xdist
+selenium
+requests
